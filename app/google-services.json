@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "607534943743",
+    "project_id": "firestore-fun-b08a9",
+    "storage_bucket": "firestore-fun-b08a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:607534943743:android:d99fd2632d8894ecd4abca",
+        "android_client_info": {
+          "package_name": "com.example.firestore_fun"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "607534943743-2cn9tjdg4v7igd5mkam05qlc7nlk3ntv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiqpykGdkcHwGFJPChJq44QIHl_tuv2WA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "607534943743-2cn9tjdg4v7igd5mkam05qlc7nlk3ntv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">firestore-fun</string>
+    <string name="txtTitleCadastrar">Cadastrar Pessoa</string>
+    <string name="txtNome">Nome</string>
+    <string name="txtIdade">Idade</string>
+    <string name="txtTelefone">Telefone</string>
+    <string name="txtEndereco">Endereço</string>
+    <string name="txtCEP">CEP</string>
+    <string name="txtCadastrar">Cadastrar</string>
+    <string name="txtNext">Consultar Tabela</string>
+</resources>
