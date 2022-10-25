@@ -3,9 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/roger/AndroidStudioProjects/firestorefun/app/src/main/res/drawable/bg_alert.xml" value="0.242" />
+        <entry key="..\:/Users/roger/AndroidStudioProjects/firestorefun/app/src/main/res/drawable/ic_cross.xml" value="0.1975" />
+        <entry key="..\:/Users/roger/AndroidStudioProjects/firestorefun/app/src/main/res/layout/activity_edit.xml" value="0.1890625" />
         <entry key="..\:/Users/roger/AndroidStudioProjects/firestorefun/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/roger/AndroidStudioProjects/firestorefun/app/src/main/res/layout/activity_register.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/roger/AndroidStudioProjects/firestorefun/app/src/main/res/layout/activity_table.xml" value="0.2734375" />
+        <entry key="..\:/Users/roger/AndroidStudioProjects/firestorefun/app/src/main/res/layout/dialog_delete.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/roger/AndroidStudioProjects/firestorefun/app/src/main/res/layout/dialog_edit.xml" value="0.1890625" />
         <entry key="..\:/Users/roger/AndroidStudioProjects/firestorefun/app/src/main/res/layout/fragment_register.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/roger/AndroidStudioProjects/firestorefun/app/src/main/res/layout/fragment_register2.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/roger/AndroidStudioProjects/firestorefun/app/src/main/res/layout/fragment_table2.xml" value="0.1125" />

@@ -23,7 +23,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TableActivity"
+            android:name=".DataActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".EditActivity"
             android:exported="true">
         </activity>
     </application>

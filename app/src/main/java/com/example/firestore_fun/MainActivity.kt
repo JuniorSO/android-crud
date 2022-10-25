@@ -1,6 +1,6 @@
 package com.example.firestore_fun
 
-import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -22,49 +22,103 @@ class MainActivity : AppCompatActivity() {
         val edtNome = findViewById<EditText>(R.id.edtNome)
         val edtIdade = findViewById<EditText>(R.id.edtIdade)
         val edtTelefone = findViewById<EditText>(R.id.edtTelefone)
-        val edtEndereco = findViewById<EditText>(R.id.edtEndereco)
-        val edtCEP = findViewById<EditText>(R.id.edtCEP)
+        val edtEmail = findViewById<EditText>(R.id.edtEmail)
+
         val btnCadastrar = findViewById<Button>(R.id.btnCadastrar)
+
         val txtConsulta = findViewById<TextView>(R.id.txtLink)
 
         txtConsulta.setOnClickListener {
-            val intent = Intent(this, TableActivity::class.java)
+            val intent = Intent(this, DataActivity::class.java)
             startActivity(intent)
             finish()
         }
 
         btnCadastrar.setOnClickListener {
+            val pessoas = db.collection("pessoas")
+
+            btnCadastrar.isEnabled = false
+
             val txtNome = edtNome.text.toString()
             val txtIdade = edtIdade.text.toString()
             val txtTelefone = edtTelefone.text.toString()
-            val txtEndereco = edtEndereco.text.toString()
-            val txtCEP = edtCEP.text.toString()
+            val txtEmail = edtEmail.text.toString()
 
-            if (txtNome.isEmpty() || txtIdade.isEmpty() || txtTelefone.isEmpty() || txtEndereco.isEmpty() || txtCEP.isEmpty()) {
+            if (txtNome.isEmpty() || txtIdade.isEmpty() || txtTelefone.isEmpty() || txtEmail.isEmpty()) {
                 Toast.makeText(
                     baseContext, "Preencha todos os campos!",
                     Toast.LENGTH_SHORT
                 ).show()
             } else {
-                val pessoa = hashMapOf(
-                    "nome" to txtNome,
-                    "idade" to txtIdade.toInt(),
-                    "telefone" to txtTelefone,
-                    "endereco" to txtEndereco,
-                    "cep" to txtCEP
-                )
+                pessoas
+                    .whereEqualTo("email", txtEmail)
+                    .get()
+                    .addOnSuccessListener { documents ->
+                        if (!documents.isEmpty) {
+                            Toast.makeText(
+                                baseContext, "Esse email está em uso.",
+                                Toast.LENGTH_SHORT
+                            ).show()
 
-                db.collection("pessoas")
-                    .add(pessoa)
-                    .addOnSuccessListener { documentReference ->
-                        Log.d(
-                            ContentValues.TAG,
-                            "DocumentSnapshot added with ID: ${documentReference.id}"
-                        )
+                            edtEmail.text.clear()
+
+                            btnCadastrar.isEnabled = true
+                        } else {
+                            val pessoa = hashMapOf(
+                                "nome" to txtNome,
+                                "idade" to txtIdade.toInt(),
+                                "telefone" to txtTelefone,
+                                "email" to txtEmail,
+                            )
+
+                            pessoas
+                                .add(pessoa)
+                                .addOnSuccessListener { documentReference ->
+                                    Log.d(
+                                        TAG,
+                                        "DocumentSnapshot added with ID: ${documentReference.id}"
+                                    )
+
+                                    Toast.makeText(
+                                        baseContext, "Registro adicionado com sucesso.",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+
+                                    btnCadastrar.isEnabled = true
+
+                                    edtNome.text.clear()
+                                    edtIdade.text.clear()
+                                    edtTelefone.text.clear()
+                                    edtEmail.text.clear()
+                                }
+                                .addOnFailureListener { e ->
+                                    Log.w(TAG, "Error adding document", e)
+
+                                    Toast.makeText(
+                                        baseContext, "Não foi possível adicionar o registro.",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+
+                                    edtNome.text.clear()
+                                    edtIdade.text.clear()
+                                    edtTelefone.text.clear()
+                                    edtEmail.text.clear()
+
+                                    btnCadastrar.isEnabled = true
+                                }
+                        }
                     }
-                    .addOnFailureListener { e ->
-                        Log.w(ContentValues.TAG, "Error adding document", e)
+                    .addOnFailureListener { exception ->
+                        Log.w(TAG, "Error getting documents: ", exception)
+
+                        Toast.makeText(
+                            baseContext, "Tente novamente mais tarde.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        btnCadastrar.isEnabled = true
                     }
+
             }
         }
     }
